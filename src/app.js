@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 const knex = require("knex");
-const { NODE_ENV, DB_URL } = require("./config");
+const { NODE_ENV, DATABASE_URL } = require("./config");
 const FoldersService = require("./folders/folders-service");
 const NotesService = require("./notes/notes-service");
 const app = express();
@@ -30,7 +30,7 @@ app.use(function errorHandler(error, req, res, next) {
 //-----------Folders Routes--------------------
 const db = knex({
   client: "pg",
-  connection: DB_URL,
+  connection: DATABASE_URL,
 });
 //get all folders
 app.get("/api/folders", async (req, res, next) => {
